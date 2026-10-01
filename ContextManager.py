@@ -1,0 +1,35 @@
+import time
+
+class Chrono():
+
+    def __init__(self):
+        self.debut = None
+        self.fin = None
+
+    def __enter__(self):
+        self.debut = time.perf_counter()
+        
+    def __exit__(self, exc_type, exc, tb):
+        self.fin = time.perf_counter()        
+        duree = self.fin - self.debut
+        print(f"Le calcul a pris {duree:.6f} secondes.")   
+
+def Collatz (valeur):
+    if valeur % 2 == 0:
+        return valeur/2
+    else :
+        return valeur*3+1
+
+    
+################################################
+
+chronometre = Chrono()
+val = 3000000001
+
+with chronometre as toto:
+    print(int(val))
+    while val!=1 : 
+    
+        val = Collatz(int(val))
+        print(int(val))
+     
