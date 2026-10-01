@@ -1,19 +1,25 @@
+import statistics
+
+
 # Lecture de toutes les lignes dans une liste
 with open("downld02.txt", "r", encoding="utf-8") as f:
     lignes = f.readlines()
 
-# Optionnel : enlever les retours à la ligne (\n) de chaque fin de ligne
-lignes_propres = [ligne.strip() for ligne in lignes]
 
+valeurs_Temperature = []
 
-#for i in range(len(lignes_propres)):
-uneLigne = lignes_propres[3].split()
-maxLigne = uneLigne[2]
-print(maxLigne)
+for ligne in lignes[3:]:
+    valeurs_Ligne = ligne.split()
+    temperature_ext = valeurs_Ligne[2]
+    valeurs_Temperature.append(float(temperature_ext)) 
     
-uneLigne = lignes_propres[4].split()
-maxLigne = uneLigne[2]
-print(maxLigne)
+#print(valeurs_Temperature)    
+temp_Max = max(valeurs_Temperature)
+temp_Min = min(valeurs_Temperature)
+temp_ecart_type = statistics.stdev(valeurs_Temperature)
 
-print(len(lignes_propres))
-print(lignes_propres[3].split())
+print("Valeur max est de ", temp_Max)
+print("Valeur min est de ", temp_Min)
+print("L'ecart type est de ", temp_ecart_type)
+    
+   
