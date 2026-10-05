@@ -14,6 +14,8 @@ def parse_archive_gh_lines(archive_path):
 
 archive = parse_archive_gh_lines("2017-09-25-22.json")
 
+print(len(archive))
+
 @app.get("/parse-archive")
 def read_archive(archive_path: str = "2017-09-25-22.json"):
     #parsed_data = parse_archive_gh_lines(archive_path)
